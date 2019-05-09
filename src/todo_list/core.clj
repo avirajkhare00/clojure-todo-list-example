@@ -1,6 +1,17 @@
-(ns todo-list.core)
+(ns todo-list.core
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+  (:require [ring.adapter.jetty :as jetty]))
+
+(defn -main
+  "A very simple web server using Ring & Jetty"
+  [port-number]
+  (jetty/run-jetty
+     (fn [request] {:status 200}
+                   :body "<h1>This is my first webapp in clojure.</h1>"
+                   :headers {})
+     {:port (Integer. port-number)}))
+
+
+                  
+
+  
